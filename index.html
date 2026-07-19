@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Singaria | Business Analyst Portfolio</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ================== CSS Variables ================== */
+        :root {
+            /* Color Palette: Navy, Slate, White */
+            --bg-color: #020617; 
+            --bg-gradient: radial-gradient(circle at top right, #1E293B, #0F172A, #020617);
+            --text-primary: #F8FAFC; 
+            --text-secondary: #94A3B8; 
+            --accent-color: #3B82F6; 
+            --accent-glow: rgba(59, 130, 246, 0.4);
+            
+            /* Glassmorphism Variables */
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(15, 23, 42, 0.75);
+        }
+
+        /* ================== Global Styles ================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #60A5FA, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        /* ================== Navigation ================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ================== Hero Section ================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 5% 60px;
+            position: relative;
+        }
+
+        /* Background Glow Effect */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 24px;
+            max-width: 900px;
+            letter-spacing: -1px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .motive {
+            font-style: italic;
+            color: #E2E8F0;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 18px 36px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            display: inline-block;
+            max-width: 800px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            border: 1px solid transparent;
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* ================== General Sections ================== */
+        section {
+            padding: 100px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* ================== Skills Section ================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .skill-category h3 {
+            font-size: 1.15rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+        }
+        
+        .skill-category h3 i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .skills-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-pill {
+            background: rgba(59, 130, 246, 0.08);
+            color: #93C5FD;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .wide-category {
+            grid-column: 1 / -1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .wide-category .skills-pills {
+            justify-content: center;
+        }
+
+        /* ================== Projects Section ================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .project-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-objective {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .tool-tag {
+            background: rgba(255,255,255,0.04);
+            color: #CBD5E1;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-insights {
+            margin-top: auto;
+            background: rgba(0,0,0,0.25);
+            padding: 18px;
+            border-radius: 12px;
+            border-left: 3px solid var(--accent-color);
+            font-size: 0.9rem;
+            color: #E2E8F0;
+        }
+
+        .project-insights strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ================== Footer / Contact ================== */
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--card-border);
+            padding: 80px 5% 40px;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            max-width: 500px;
+            margin-inline: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 20px 32px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card i {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px;
+        }
+
+        /* ================== Animations ================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================== Responsive ================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 5%;
+            }
+            .nav-links {
+                display: none; /* Mobile menu logic can be added */
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .motive {
+                font-size: 1rem;
+                padding: 16px 24px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-card {
+                width: 100%;
+                max-width: 340px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================== Navigation ================== -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-chart-pie" style="color: var(--accent-color);"></i>
+            GitHub Portfolio
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ================== Hero Section ================== -->
+    <section id="home" class="hero">
+        <div class="hero-tags fade-in">
+            <span class="hero-tag">Aspiring Business Analyst</span>
+            <span class="hero-tag">Strategic Problem Solver</span>
+            <span class="hero-tag">Ex-Ecommerce Store Founder</span>
+            <span class="hero-tag">BBA Grad</span>
+        </div>
+        <h1 class="fade-in">Hi, I'm <span class="gradient-text">Gaurav</span><br>Business Analyst</h1>
+        <div class="motive fade-in">
+            "Driving Business Growth with Data-Driven Insights & Innovative Solutions!"
+        </div>
+        <a href="#projects" class="cta-btn fade-in">View My Work <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </section>
+
+    <!-- ================== Skills Section ================== -->
+    <section id="skills" class="skills">
+        <h2 class="section-title fade-in" style="text-align: center;">Technical Skills & Tools</h2>
+        <div class="skills-grid">
+            
+            <!-- Soft Skills -->
+            <div class="skill-category fade-in">
+                <h3><i class="fa-solid fa-lightbulb"></i> Soft Skills</h3>
+                <div class="skills-pills">
+                    <span class="skill-pill">Requirements Gathering</span>
+                    <span class="skill-pill">Data Modeling & Visualization</span>
+                    <span class="skill-pill">Predictive Analysis, Sales Forecast</span>
+                    <span class="skill-pill">Business Process Mapping</span>
+                    <span class="skill-pill">User Acceptance Testing</span>
+                    <span class="skill-pill">Process Flowchart/Wireframing</span>
+                    <span class="skill-pill">User Stories/Customer Journey</span>
+                </div>
+            </div>
+
+            <!-- Tools & Software -->
+            <div class="skill-category fade-in" style="transition-delay: 0.1s;">
+                <h3><i class="fa-solid fa-toolbox"></i> Tools & Software</h3>
+                <div class="skills-pills">
+                    <span class="skill-pill">Microsoft Excel</span>
+                    <span class="skill-pill">Tableau/Power BI</span>
+                    <span class="skill-pill">MySQL</span>
+                    <span class="skill-pill">Jira</span>
+                    <span class="skill-pill">Figma/MS Visio Drawing</span>
+                    <span class="skill-pill">R Studio</span>
+                    <span class="skill-pill">WordPress</span>
+                </div>
+            </div>
+
+            <!-- Coding Language -->
+            <div class="skill-category fade-in" style="transition-delay: 0.2s;">
+                <h3><i class="fa-solid fa-code"></i> Coding Language</h3>
+                <div class="skills-pills">
+                    <span class="skill-pill">Python (Beginner)</span>
+                    <span class="skill-pill">R (Beginner)</span>
+                    <span class="skill-pill">SQL (Intermediate)</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================== Projects Section ================== -->
+    <section id="projects" class="projects">
+        <h2 class="section-title fade-in" style="text-align: center;">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card fade-in" onclick="window.open('https://github.com/GauravSingaria/BA-Portfolio/tree/main/Denpro%20Financial%20Data%20Analysis%20-%20Power%20BI', '_blank')" style="cursor: pointer;">
+                <img src="https://inkmypaper-aus.com/blog/wp-content/uploads/2025/05/financialanalysis1.jpg" alt="Denpro Dashboard" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Denpro Financial Data Analysis</h3>
+                    <p class="project-objective">Designed an interactive dashboard to track regional sales performance, product profitability, and customer acquisition metrics.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">SQL</span>
+                        <span class="tool-tag">Excel</span>
+                    </div>
+                    <div class="project-insights">
+                        <strong>Key Insights</strong>
+                        Identified key seasonal trends and a 15% drop in Q3 retention, leading to a targeted marketing campaign.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card fade-in" style="transition-delay: 0.1s; cursor: pointer;" onclick="window.open('https://github.com/GauravSingaria/Business-Analyst-Portfolio/tree/main/Glidion-Complete%20Analysis', '_blank')">
+                <img src="https://www.speed.ph/wp-content/uploads/2023/01/HyperX.jpg" alt="Glidion Analytics" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Glidion Marketing & Sales Analysis</h3>
+                    <p class="project-objective">Analyzed customer demographic and behavioral data to identify primary drivers of churn for a subscription-based service, along with AWS webhosting BRD Documentation.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Python (Pandas, Scikit-Learn)</span>
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">R Studio</span>
+                        <span class="tool-tag">Jupyter</span>
+                    </div>
+                    <div class="project-insights">
+                        <strong>Key Insights</strong>
+                        Discovered that customers on month-to-month contracts were 3x more likely to churn, prompting a strategic push for annual plans.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card fade-in" style="transition-delay: 0.2s; cursor: pointer;" onclick="window.open('https://github.com/GauravSingaria/Business-Analyst-Portfolio/tree/main/HR%20Data%20Analysis', '_blank')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDL2jg1fVDEINzTPb6Su0MhcO8t8ZC_T1aJWIWZRvYIozuzMPQqt7fN_w&s=10" alt="HR Data Analysis" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">HR Data Analysis</h3>
+                    <p class="project-objective">Cleaned dataset and built a Power BI dashboard based on Organization Employee Structure, demography, location, and work experience.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Power BI</span>
+                        <span class="tool-tag">Kaggle (Dataset)</span>
+                    </div>
+                    <div class="project-insights">
+                        <strong>Key Insights</strong>
+                        Visualized Gender Ratio, Marital Status, Department distributions, Age Group, Monthly Salary Expense, and Employee Satisfaction metrics.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card fade-in" onclick="window.open('https://github.com/GauravSingaria/Business-Analyst-Portfolio/tree/main/TastyGo_Documentation_Package', '_blank')" style="cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFjGxbuwybsLjiwCUk2BOCv5FwLFvMFje4K0JECQGGrQ&s=10" alt="TastyGo Documentation" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">TastyGo Documentation Package</h3>
+                    <p class="project-objective">From Client Requirement to Proposal — A Complete Requirement Engineering Package.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Claude AI</span>
+                        <span class="tool-tag">MS Word</span>
+                        <span class="tool-tag">MS Visio</span>
+                        <span class="tool-tag">Jira</span>
+                    </div>
+                    <div class="project-insights">
+                        <strong>Key Deliverables</strong>
+                        Client Requirement Document, Scope Definition, Feature List, User Stories, Project Timeline, Cost Estimation, and Proposal Document.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card fade-in" style="transition-delay: 0.1s; cursor: pointer;" onclick="window.open('https://github.com/GauravSingaria/Business-Analyst-Portfolio/tree/main/Bright%20Smile%20Dental%20Clinic', '_blank')">
+                <img src="https://cdn.dribbble.com/userupload/42825035/file/original-2bc3a86c8a86a470e95bf3bdf5efe9da.png?resize=2048x1536&vertical=center" alt="Bright Smile Dental Clinic" class="project-img">
+                <div class="project-content">
+                    <h3 class="project-title">Bright Smile Dental Clinic</h3>
+                    <p class="project-objective">Analyze requirements and design a website and patient management solution to improve appointment booking and patient experience.</p>
+                    <div class="project-tools">
+                        <span class="tool-tag">Figma</span>
+                        <span class="tool-tag">Excel</span>
+                        <span class="tool-tag">Jira</span>
+                        <span class="tool-tag">WordPress</span>
+                        <span class="tool-tag">Draw.io</span>
+                    </div>
+                    <div class="project-insights">
+                        <strong>Key Outcomes</strong>
+                        Streamlined appointment scheduling, defined workflows, created feature lists and user stories, and improved UX with structured website design.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================== Footer / Contact Section ================== -->
+    <footer id="contact" class="fade-in">
+        <div class="contact-content">
+            <h2>Let's Connect</h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+            
+            <div class="contact-links">
+                <a href="https://linkedin.com/in/gaurav-singaria" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn Profile</span>
+                </a>
+                <a href="mailto:gauravsingaria2001@gmail.com" class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>gauravsingaria2001@gmail.com</span>
+                </a>
+                <a href="tel:+919461042711" class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 9461042711</span>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                &copy; <script>document.write(new Date().getFullYear())</script> Gaurav Singaria. Portfolio built for Data-Driven Success.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================== JavaScript ================== -->
+    <script>
+        // Smooth scrolling functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjusting for sticky nav
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add background blur and shadow to nav on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(15, 23, 42, 0.9)';
+                nav.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            } else {
+                nav.style.background = 'rgba(15, 23, 42, 0.75)';
+                nav.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
