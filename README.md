@@ -1,5 +1,7 @@
 # 📊 Gaurav Singaria | Business Analyst Portfolio
 
+[![View Portfolio](https://img.shields.io/badge/View_My_Portfolio-0A66C2?style=for-the-badge&logo=github&logoColor=white)](https://gauravsingaria.github.io/Business-Analyst-Portfolio/)
+
 > **Aspiring Business Analyst | Strategic Problem Solver | Ex-Ecommerce Store Founder | BBA Grad**
 > 
 > *Motive: Driving Business Growth with Data-Driven Insights & Innovative Solutions!*
