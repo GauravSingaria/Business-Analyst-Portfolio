@@ -1,13 +1,12 @@
 # 📊 Gaurav Singaria | Business Analyst Portfolio
 
-[![View Portfolio](https://img.shields.io/badge/View_My_Portfolio-0A66C2?style=for-the-badge&logo=github&logoColor=white)](https://gauravsingaria.github.io/Business-Analyst-Portfolio/)
-
 > **Aspiring Business Analyst | Strategic Problem Solver | Ex-Ecommerce Store Founder | BBA Grad**
 > 
 > *Motive: Driving Business Growth with Data-Driven Insights & Innovative Solutions!*
 
 Welcome to my project portfolio! This repository serves as a central hub for my analytical projects, showcasing my ability to clean, analyze, and visualize data to drive strategic business decisions.
 
+[![View Portfolio](https://img.shields.io/badge/View_My_Portfolio-0A66C2?style=for-the-badge&logo=github&logoColor=white)](https://gauravsingaria.github.io/Business-Analyst-Portfolio/)
 ---
 
 ## 🛠️ Technical Skills & Tools
