@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bright Smile Dental Care — User Journey Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Permanent+Marker&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#EEF1F7;
+    --dot:#D4D9E4;
+    --ink:#2B2B33;
+    --yellow:#FFF1A6; --yellow-b:#E7D269;
+    --pink:#FFC9DE;   --pink-b:#F0A6C6;
+    --blue:#BEE7FA;   --blue-b:#8FCBE8;
+    --orange:#FFD3A6; --orange-b:#EAAE6E;
+    --green:#C8F2C2;  --green-b:#9BDD93;
+    --purple:#E0D3FA; --purple-b:#C3AAF0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle, var(--dot) 1.6px, transparent 1.6px) 0 0/22px 22px,
+      var(--canvas);
+    font-family:'Kalam', cursive;
+    color:var(--ink);
+  }
+
+  .board{ max-width:1740px; margin:0 auto; padding:36px 40px 90px; }
+
+  /* ---------- Toolbar / board title strip (clean, non-handwritten, mimics FigJam chrome) ---------- */
+  .toolbar{
+    display:flex; align-items:center; justify-content:space-between;
+    background:#fff; border:1px solid #E2E5EE; border-radius:12px;
+    padding:12px 20px; margin-bottom:26px; box-shadow:0 2px 8px rgba(40,50,90,0.06);
+    font-family:'Inter',sans-serif;
+  }
+  .toolbar-left{ display:flex; align-items:center; gap:12px; }
+  .board-dot{ width:10px;height:10px;border-radius:50%; background:#7B61FF; }
+  .board-name{ font-weight:700; font-size:14px; color:#1F2430; }
+  .board-sub{ font-size:12px; color:#8A90A3; }
+  .toolbar-right{ display:flex; gap:8px; }
+  .chip{
+    font-size:11px; font-weight:600; padding:5px 12px; border-radius:16px;
+    background:#F2F3F8; color:#5B6070; border:1px solid #E2E5EE;
+  }
+
+  h1.title{
+    font-family:'Permanent Marker', cursive;
+    font-size:34px; font-weight:400; color:#1F2A44;
+    margin:6px 0 4px; transform:rotate(-1deg);
+  }
+  .subtitle{ font-family:'Inter',sans-serif; font-size:13.5px; color:#5B6070; margin:0 0 28px; max-width:640px; }
+
+  /* ---------- Persona sticky ---------- */
+  .persona-row{ display:flex; gap:22px; align-items:stretch; margin-bottom:34px; flex-wrap:wrap; }
+  .persona-card{
+    background:var(--purple); border:2px solid var(--purple-b);
+    border-radius:6px; padding:18px 20px; width:320px; flex-shrink:0;
+    box-shadow:5px 6px 0 rgba(0,0,0,0.06); transform:rotate(-1.2deg);
+    position:relative;
+  }
+  .persona-card::before{
+    content:''; position:absolute; top:-10px; left:24px; width:46px; height:18px;
+    background:rgba(255,255,255,0.55); border:1px solid rgba(0,0,0,0.06); transform:rotate(-4deg);
+  }
+  .persona-top{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .avatar{
+    width:52px;height:52px;border-radius:50%; background:#fff; border:2px solid var(--purple-b);
+    display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0;
+  }
+  .persona-name{ font-weight:700; font-size:19px; margin:0; }
+  .persona-role{ font-size:13px; color:#4A3F73; margin:2px 0 0; }
+  .persona-quote{
+    font-size:14.5px; font-style:italic; background:rgba(255,255,255,0.55); border-radius:6px;
+    padding:9px 11px; margin:10px 0 12px; line-height:1.35;
+  }
+  .persona-list{ font-size:13px; margin:0 0 8px; padding-left:18px; line-height:1.5; }
+  .persona-list-title{ font-weight:700; font-size:12.5px; text-transform:uppercase; letter-spacing:.03em; font-family:'Inter',sans-serif; color:#4A3F73; margin-bottom:3px; }
+
+  .legend-card{
+    background:#fff; border:2px dashed #C7CCDB; border-radius:8px; padding:16px 20px;
+    flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;
+  }
+  .legend-title{ font-family:'Inter',sans-serif; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#5B6070; margin:0 0 12px; }
+  .legend-grid{ display:flex; flex-wrap:wrap; gap:10px 22px; }
+  .legend-item{ display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:12.5px; color:#3A3F4D; }
+  .legend-sw{ width:16px; height:16px; border-radius:4px; flex-shrink:0; }
+
+  /* ---------- Emotion curve ---------- */
+  .emotion-wrap{
+    background:#fff; border:1px solid #E2E5EE; border-radius:10px; padding:18px 24px 8px; margin-bottom:8px;
+  }
+  .emotion-title{ font-family:'Inter',sans-serif; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#5B6070; margin:0 0 6px; }
+  .emo-face{ font-size:22px; }
+  .emo-label{ font-family:'Kalam',cursive; font-weight:700; font-size:12.5px; }
+
+  /* ---------- Journey grid ---------- */
+  .journey{
+    display:grid;
+    grid-template-columns:150px repeat(6, 1fr);
+    gap:10px;
+    margin-top:18px;
+  }
+  .stage-head{
+    background:#1F2A44; color:#fff; border-radius:8px; padding:12px 12px;
+    text-align:center; position:relative; font-family:'Inter',sans-serif;
+  }
+  .stage-num{
+    font-family:'Permanent Marker',cursive; font-size:20px; opacity:.85; display:block; margin-bottom:2px;
+  }
+  .stage-name{ font-weight:700; font-size:14px; }
+  .row-tag{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.05em; color:#fff; border-radius:8px; padding:10px 8px; line-height:1.3;
+  }
+  .tag-actions{ background:#C9A400; }
+  .tag-thoughts{ background:#C24A78; }
+  .tag-touch{ background:#1E7FA6; }
+  .tag-pain{ background:#C46A22; }
+  .tag-opp{ background:#2F9B4E; }
+
+  .sticky{
+    border-radius:5px; padding:12px 13px; font-size:13.5px; line-height:1.38;
+    box-shadow:3px 4px 0 rgba(0,0,0,0.07); min-height:64px; display:flex; align-items:center;
+  }
+  .sticky ul{ margin:0; padding-left:16px; }
+  .sticky li{ margin-bottom:3px; }
+  .sticky.actions{ background:var(--yellow); border:2px solid var(--yellow-b); }
+  .sticky.thoughts{ background:var(--pink); border:2px solid var(--pink-b); font-style:italic;}
+  .sticky.touch{ background:var(--blue); border:2px solid var(--blue-b); }
+  .sticky.pain{ background:var(--orange); border:2px solid var(--orange-b); }
+  .sticky.opp{ background:var(--green); border:2px solid var(--green-b); }
+
+  .col:nth-child(odd) .sticky{ transform:rotate(-0.6deg); }
+  .col:nth-child(even) .sticky{ transform:rotate(0.6deg); }
+
+  .flow-arrow{
+    font-family:'Inter',sans-serif; text-align:center; color:#AEB4C4; font-size:18px; font-weight:700;
+  }
+
+  .notes-footer{
+    margin-top:34px; background:#fff; border:2px dashed #C7CCDB; border-radius:10px; padding:18px 22px;
+    font-family:'Inter',sans-serif; font-size:12.5px; color:#4A4F5E; line-height:1.6;
+  }
+  .notes-footer b{ color:#1F2A44; }
+</style>
+</head>
+<body>
+<div class="board">
+
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <div class="board-dot"></div>
+      <div>
+        <div class="board-name">Bright Smile Dental Care — Website Discovery</div>
+        <div class="board-sub">FigJam-style board · User Journey Map · Ref: BSD-UJ-01</div>
+      </div>
+    </div>
+    <div class="toolbar-right">
+      <div class="chip">Pre-Sales / UX</div>
+      <div class="chip">For Client Review</div>
+    </div>
+  </div>
+
+  <h1 class="title">🦷 New Patient Journey — "I have a toothache, now what?"</h1>
+  <p class="subtitle">Mapping how a first-time patient goes from noticing tooth pain to becoming a returning, referring patient — used to prioritize what the new website needs to do at each step.</p>
+
+  <div class="persona-row">
+    <div class="persona-card">
+      <div class="persona-top">
+        <div class="avatar">🙋‍♀️</div>
+        <div>
+          <p class="persona-name">Priya Sharma</p>
+          <p class="persona-role">34 · Marketing Manager · Jaipur</p>
+        </div>
+      </div>
+      <div class="persona-quote">"I just want a dentist I can trust, booked in two minutes, without ten phone calls."</div>
+      <div class="persona-list-title">Goals</div>
+      <ul class="persona-list">
+        <li>Get tooth pain treated quickly, by someone reliable</li>
+        <li>Avoid surprise costs</li>
+        <li>Book without calling during work hours</li>
+      </ul>
+      <div class="persona-list-title">Frustrations</div>
+      <ul class="persona-list">
+        <li>Mild dental anxiety — avoids the topic until it hurts</li>
+        <li>Can't tell which clinics are actually good online</li>
+      </ul>
+    </div>
+
+    <div class="legend-card">
+      <div class="legend-title">Row Legend</div>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="legend-sw" style="background:var(--yellow);border:1.5px solid var(--yellow-b)"></span> Actions — what she does</div>
+        <div class="legend-item"><span class="legend-sw" style="background:var(--pink);border:1.5px solid var(--pink-b)"></span> Thoughts &amp; Quotes</div>
+        <div class="legend-item"><span class="legend-sw" style="background:var(--blue);border:1.5px solid var(--blue-b)"></span> Touchpoints</div>
+        <div class="legend-item"><span class="legend-sw" style="background:var(--orange);border:1.5px solid var(--orange-b)"></span> Pain Points</div>
+        <div class="legend-item"><span class="legend-sw" style="background:var(--green);border:1.5px solid var(--green-b)"></span> Website Opportunities</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emotion curve -->
+  <div class="emotion-wrap">
+    <p class="emotion-title">Emotional Curve</p>
+    <svg viewBox="0 0 900 130" width="100%" height="130" preserveAspectRatio="none" style="overflow:visible;">
+      <line x1="0" y1="60" x2="900" y2="60" stroke="#E6E9F0" stroke-width="1.5" stroke-dasharray="4 5"/>
+      <polyline points="75,85 225,72.5 375,47.5 525,35 675,52.5 825,10"
+                fill="none" stroke="#7B61FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g font-family="Inter, sans-serif" font-size="20">
+        <text x="75" y="80" text-anchor="middle">😟</text>
+        <text x="225" y="67" text-anchor="middle">😕</text>
+        <text x="375" y="42" text-anchor="middle">🙂</text>
+        <text x="525" y="30" text-anchor="middle">😊</text>
+        <text x="675" y="47" text-anchor="middle">😬</text>
+        <text x="825" y="5"  text-anchor="middle">🤩</text>
+      </g>
+      <g fill="#7B61FF">
+        <circle cx="75" cy="85" r="5"/><circle cx="225" cy="72.5" r="5"/><circle cx="375" cy="47.5" r="5"/>
+        <circle cx="525" cy="35" r="5"/><circle cx="675" cy="52.5" r="5"/><circle cx="825" cy="10" r="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Journey grid -->
+  <div class="journey">
+    <!-- header row -->
+    <div></div>
+    <div class="stage-head"><span class="stage-num">1</span><span class="stage-name">Trigger &amp; Awareness</span></div>
+    <div class="stage-head"><span class="stage-num">2</span><span class="stage-name">Research</span></div>
+    <div class="stage-head"><span class="stage-num">3</span><span class="stage-name">Evaluation</span></div>
+    <div class="stage-head"><span class="stage-num">4</span><span class="stage-name">Booking</span></div>
+    <div class="stage-head"><span class="stage-num">5</span><span class="stage-name">Clinic Visit</span></div>
+    <div class="stage-head"><span class="stage-num">6</span><span class="stage-name">Post-Visit</span></div>
+
+    <!-- Actions row -->
+    <div class="row-tag tag-actions">Actions</div>
+    <div class="col"><div class="sticky actions"><ul><li>Notices sharp tooth pain while eating</li><li>Ignores it for a day, hoping it fades</li></ul></div></div>
+    <div class="col"><div class="sticky actions"><ul><li>Googles "dentist near me Jaipur"</li><li>Skims Google Maps ratings</li></ul></div></div>
+    <div class="col"><div class="sticky actions"><ul><li>Opens 2–3 clinic websites in tabs</li><li>Compares services &amp; reads testimonials</li></ul></div></div>
+    <div class="col"><div class="sticky actions"><ul><li>Clicks "Book Appointment"</li><li>Fills form, picks earliest slot</li></ul></div></div>
+    <div class="col"><div class="sticky actions"><ul><li>Arrives, completes intake form</li><li>Consultation, treatment, pays</li></ul></div></div>
+    <div class="col"><div class="sticky actions"><ul><li>Gets follow-up SMS</li><li>Leaves a Google review</li></ul></div></div>
+
+    <!-- Thoughts row -->
+    <div class="row-tag tag-thoughts">Thoughts &amp; Quotes</div>
+    <div class="col"><div class="sticky thoughts">"Is this serious, or will it just go away?"</div></div>
+    <div class="col"><div class="sticky thoughts">"Which of these is actually good, not just paid ads?"</div></div>
+    <div class="col"><div class="sticky thoughts">"Do they even treat emergencies today? What's this going to cost?"</div></div>
+    <div class="col"><div class="sticky thoughts">"I hope this actually confirms — I don't want to call and wait on hold."</div></div>
+    <div class="col"><div class="sticky thoughts">"I hope this doesn't take forever or hurt too much."</div></div>
+    <div class="col"><div class="sticky thoughts">"That was so much easier than I expected. I'd tell a friend."</div></div>
+
+    <!-- Touchpoints row -->
+    <div class="row-tag tag-touch">Touchpoints</div>
+    <div class="col"><div class="sticky touch"><ul><li>Own experience</li><li>Asks a friend on WhatsApp</li></ul></div></div>
+    <div class="col"><div class="sticky touch"><ul><li>Google Search</li><li>Google Business Profile / Maps</li></ul></div></div>
+    <div class="col"><div class="sticky touch"><ul><li>Clinic website — Services &amp; Testimonials pages</li></ul></div></div>
+    <div class="col"><div class="sticky touch"><ul><li>Online booking form</li><li>Confirmation SMS / email</li></ul></div></div>
+    <div class="col"><div class="sticky touch"><ul><li>Front desk</li><li>Dentist &amp; payment counter</li></ul></div></div>
+    <div class="col"><div class="sticky touch"><ul><li>Follow-up SMS/email</li><li>Google review prompt</li></ul></div></div>
+
+    <!-- Pain points row -->
+    <div class="row-tag tag-pain">Pain Points</div>
+    <div class="col"><div class="sticky pain">Doesn't know any dentist nearby; anxious about cost &amp; pain</div></div>
+    <div class="col"><div class="sticky pain">Too many similar-looking options; some sites look outdated</div></div>
+    <div class="col"><div class="sticky pain">No visible pricing; unclear if same-day slots exist</div></div>
+    <div class="col"><div class="sticky pain">Booking form feels long; no instant confirmation</div></div>
+    <div class="col"><div class="sticky pain">Wait time; re-fills a paper form she already submitted online</div></div>
+    <div class="col"><div class="sticky pain">No reminder for next cleaning; nobody asks for a review in the moment</div></div>
+
+    <!-- Opportunities row -->
+    <div class="row-tag tag-opp">Website Opportunities</div>
+    <div class="col"><div class="sticky opp">Emergency care messaging visible sitewide, not buried</div></div>
+    <div class="col"><div class="sticky opp">Strong Google Business Profile; homepage trust signals (rating, years open)</div></div>
+    <div class="col"><div class="sticky opp">Transparent starting prices; clear "same-day appointments available" note</div></div>
+    <div class="col"><div class="sticky opp">Short 3-field booking form; instant SMS/email confirmation</div></div>
+    <div class="col"><div class="sticky opp">Digital intake form pre-fills from the booking submission</div></div>
+    <div class="col"><div class="sticky opp">Automated 6-month recall reminder; same-day review request</div></div>
+  </div>
+
+  <div class="notes-footer">
+    <b>How to use this map:</b> Each row is a lens the website design needs to satisfy at every stage — not just the Booking column. The biggest opportunity gap sits in <b>Evaluation</b> (Stage 3) and <b>Booking</b> (Stage 4): if pricing transparency and a short booking flow aren't solved there, Priya drops off to a competitor before ever reaching the clinic. This map feeds directly into the Sitemap and Homepage Wireframe already in review.
+  </div>
+
+</div>
+</body>
+</html>
